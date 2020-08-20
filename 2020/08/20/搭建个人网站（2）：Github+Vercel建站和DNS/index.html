@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Ahrisy">
   <meta name="keywords" content="">
-  <title>搭建个人网站（1）：申请域名 - Ahrisyの碎碎念</title>
+  <title>搭建个人网站（2）：Github+Vercel建站和DNS - Ahrisyの碎碎念</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -172,8 +172,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-17 13:24" pubdate>
-      2020年8月17日 下午
+    <time datetime="2020-08-20 09:14" pubdate>
+      2020年8月20日 上午
     </time>
   </div>
 
@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      642 字
+      985 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      10
        分钟
     </span>
   
@@ -223,38 +223,48 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">搭建个人网站（1）：申请域名</h1>
+            <h1 style="display: none">搭建个人网站（2）：Github+Vercel建站和DNS</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h2><p>域名（Domain Name）就是大家经常输入的 xxx.com，xxx.cn 之类的网址啦，而各个教程和平台中常见的简写DNS（Domain Name Server） 就是域名服务器，它搭载了网域名称系统（Domain Name System，是将域名和IP地址相互映射的系统）。当用户输入域名时，DNS就会通过将域名转换为IP地址提供给机器处理，类似于一个手机里号码簿之类的存在。</p>
-<p>所以建立网站，首先就要购买一个域名（没有人会想记一串IP地址的），国内的话可以选用阿里云、腾讯云之类的平台，但在国内购买域名的话需要实名认证，如果使用国内的服务器搭建网站的话还需要备案。在备案之后，别人就可以在域名备案查询网站（比如 <a target="_blank" rel="noopener" href="http://icp.chinaz.com/">http://icp.chinaz.com/</a> ）上看到你的个人信息，e.g. </p>
-<p><img src="icp.png" srcset="/img/loading.gif"></p>
-<p>个人是很反感这种情况的，毕竟自己的隐私还是想尽可能地保护好，所以国内的域名和服务器就不做考虑了，国外购买域名的话个人对比了下面这几家：</p>
-<ul>
-<li><p><a target="_blank" rel="noopener" href="https://www.namesilo.com/">NameSilo</a> 似乎最近发展不错，价格很是便宜，提供免费的Whols Privacy（域名隐私保护）等功能，支持支付宝和微信，就是网站界面有点丑。我选的就是这家，新用户的话可以用这个优惠码：<strong>asns2020</strong>，直接复制在付款时粘贴到对应的coupon框里面就可以了。</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.godaddy.com/">GoDaddy</a>  规模很大，价格尚可，大部分域名第一年有优惠，但Whois Privacy需要另加价购买，总价付款渠道很多，支付宝也可以用。</p>
-</li>
-<li><p><a href="%22https://www.namecheap.com/%22">Namecheap</a> 价格和NameSilo比要稍微贵一些。</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.domain.com/">Domain</a> 价格贵了，而且不支持支付宝和微信，所以不考虑。</p>
-</li>
-</ul>
-<h2 id="NameSilo-域名购买流程"><a href="#NameSilo-域名购买流程" class="headerlink" title="NameSilo 域名购买流程"></a>NameSilo 域名购买流程</h2><ul>
-<li><p>Step 1：进入<a target="_blank" rel="noopener" href="https://www.namesilo.com/">NameSilo主页</a> ，搜索你想要的域名，选到想要的之后点右边的Add，然后它就会变成Checkout。</p>
-<p><img src="add_domains.jpg" srcset="/img/loading.gif"></p>
-</li>
-<li><p>选好喜欢的域名之后，点Checkout就会显示下面的页面。</p>
-<p><img src="checkout.jpg" srcset="/img/loading.gif"></p>
-</li>
-<li><p>前两个不用管，Auto-Renew的意思就是到期了自动续费，Privacy Setting那里选WHOIS Privacy，把coupon输入后点submit，它就会给个1刀的discount啦。</p>
-</li>
-<li><p>完成之后点Continue进行付款，如果是第一次使用的话需要注册一个账号，按提示来就可以了。</p>
-</li>
-<li><p>注册完账号，付完款后点击右上角的Manage My Domains，就可以看到我们的域名啦~</p>
+              <p>在购买好自定义域名之后，下一步就是去找个服务器来放置我们的网站了，但国内服务器要备案，国外的服务器又贵，既不想备案又不想花钱的话，那 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a> 是个不错的选择。</p>
+<p>但GitHub的问题在于国内访问速度很慢，如果主要是面向国内的话建议使用 <a target="_blank" rel="noopener" href="https://vercel.com/">Vercel</a> （原本叫Zeit）。Github Pages的教程已经够多了，但Vercel的教程很少，所以这里主要讲如何用 GitHub + Vercel配置个人网站。</p>
+<h2 id="Why-Vercel"><a href="#Why-Vercel" class="headerlink" title="Why Vercel"></a>Why Vercel</h2><p>相比于GitHub Pages，国内访问Vercel的速度更快，而且无需科学上网，下面是我自己的一个网站使用Vercel前后速度的对比（使用了二级域名，vercel似乎并不能将一个仓库的站点作为另一个仓库的子目录），访问速度平均提升近7倍。</p>
+<p><img src="newspeed.jpg" srcset="/img/loading.gif"></p>
+<h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p>如果没有GitHub账号的话需要申请一个，注意<strong>不要使用QQ邮箱作为主邮箱</strong>，因为Vercel会自动拒绝使用QQ邮箱的账号。如果已经用QQ邮箱注册了GitHub，可以到Setting -&gt; Emails里修改自己的主邮箱。</p>
+<p>然后在GitHub里建一个仓库来存放自己的网页，仓库的名字可以随便取，然后可以上传个index.html方便之后预览，e.g.</p>
+<p><img src="gitrepo.jpg" srcset="/img/loading.gif" alt="gitrepo"></p>
+<h2 id="Vercel"><a href="#Vercel" class="headerlink" title="Vercel"></a>Vercel</h2><p>建立好GitHub repo之后，就可以去配置Vercel了。</p>
+<p>进入<a target="_blank" rel="noopener" href="https://vercel.com/home">Vercel官网</a>，点击主页上那个大大的Start Deploying，它会让你选择一种登录Vercel的方法，支持使用GitHub，GitLab和Bitbucket登录，这里我们选GitHub，然后就会看到下面的页面：</p>
+<p><img src="import_github.jpg" srcset="/img/loading.gif" alt="import github"></p>
+<p>输入用来存放网站的GitHub Repo的地址，然后点Continue，他会让你选择包含source code的文件：</p>
+<p><img src="importpj.jpg" srcset="/img/loading.gif"></p>
+<p>（PS：如果是第一次使用Vercel的话，上面两步里会弹出在GitHub中安装vercel的许可，同意即可）</p>
+<p>这里我们没啥source code，所以直接continue即可，就会出现下面的页面：</p>
+<p><img src="importsetting.jpg" srcset="/img/loading.gif"></p>
+<p>如果你需要编译souce code的话，可以看看framework preset里有没有设定好的配置，如果是像我这样只是个静态网页，直接打开index.html就可以使用的话就选择other，然后build command打开override，里面什么也不用填，这样vercel就会直接将你的网站呈现出来，不进行改动。</p>
+<p>设置好之后点Deploy即可。</p>
+<p>顺利的话稍等片刻就会弹出部署成功的页面，还有浮夸的撒花233。</p>
+<p><img src="success.jpg" srcset="/img/loading.gif"></p>
+<p>如果一直显示queued的话，可以联系vercel的support，回复速度很快，基本一天就能解决（记得查邮箱）。</p>
+<p>部署完成之后可以点击visit进入网页看看效果：</p>
+<p><img src="preview.jpg" srcset="/img/loading.gif"></p>
+<h2 id="配置自定义域名"><a href="#配置自定义域名" class="headerlink" title="配置自定义域名"></a>配置自定义域名</h2><p>进入这个deployment的界面：</p>
+<p><img src="project.jpg" srcset="/img/loading.gif"></p>
+<p>点View Domains就会直接跳到配置域名的选项：</p>
 <p><img src="domain.jpg" srcset="/img/loading.gif"></p>
-</li>
-</ul>
+<p>输入自己的域名，然后点Add，它会弹出来一些需要做的配置，接下来需要去我们的域名提供商那里根据Vercel给出的要求进行配置。</p>
+<p>我是在NameSilo购买的域名，所以就进入NameSilo的管理页面：</p>
+<p><img src="namesilo.jpg" srcset="/img/loading.gif"></p>
+<p>选中需要配置的域名，点击上方的Change Nameservers可以更换Name server（我这里已经改过了），点击右侧小小的蓝球可以配置DNS。</p>
+<p>把Name Servers改成Vercel提供的两个server</p>
+<p><img src="nameserver.jpg" srcset="/img/loading.gif"></p>
+<p>这个配置会在48个小时内生效，我的话十几分钟就生效了。</p>
+<p>然后按Vercel的要求把DNS改为：</p>
+<p><img src="DNS.jpg" srcset="/img/loading.gif"></p>
+<p>这个会在15分钟内生效。</p>
+<p>等这两个改动都生效之后就可以用我们自己的域名访问刚刚建立的网站啦~</p>
+<p>以后想要修改网站的话，只需要将改动push到GitHub上，vercel会自动把改动同步过来，完全不用管，超省心。</p>
+<p>在一级域名配置好之后，也可以直接在vercel中使用二级域名，无需进行额外设置。</p>
 
             </div>
             <hr>
@@ -274,9 +284,13 @@
                     
                       <a class="hover-with-bg" href="/tags/%E5%BB%BA%E7%AB%99/">建站</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%9F%9F%E5%90%8D/">域名</a>
-                    
                       <a class="hover-with-bg" href="/tags/NameSilo/">NameSilo</a>
+                    
+                      <a class="hover-with-bg" href="/tags/DNS/">DNS</a>
+                    
+                      <a class="hover-with-bg" href="/tags/GitHub/">GitHub</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Vercel/">Vercel</a>
                     
                   </div>
                 
@@ -289,18 +303,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/20/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%882%EF%BC%89%EF%BC%9AGithub+Vercel%E5%BB%BA%E7%AB%99%E5%92%8CDNS/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">搭建个人网站（2）：Github+Vercel建站和DNS</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/08/16/%E6%90%AD%E5%A5%BD%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%BA%86/">
-                        <span class="hidden-mobile">搭好个人博客了</span>
+                      <a href="/2020/08/17/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%881%EF%BC%89%EF%BC%9A%E7%94%B3%E8%AF%B7%E5%9F%9F%E5%90%8D/">
+                        <span class="hidden-mobile">搭建个人网站（1）：申请域名</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -462,7 +470,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "搭建个人网站（1）：申请域名&nbsp;",
+        "搭建个人网站（2）：Github+Vercel建站和DNS&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
