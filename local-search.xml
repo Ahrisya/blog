@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>搭建个人网站（3）：Hexo搭建网站</title>
+    <link href="/2020/08/26/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%883%EF%BC%89%EF%BC%9AHexo%E6%90%AD%E5%BB%BABlog/"/>
+    <url>/2020/08/26/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%883%EF%BC%89%EF%BC%9AHexo%E6%90%AD%E5%BB%BABlog/</url>
+    
+    <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Hexo 是一款使用Node.js的博客框架，可以使用它来快速生成静态网页，还有很多可选用的主题，也可以自己修改主题。</p><p>中文官网：<a href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a></p><h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><p>在安装Hexo之前需要安装Node.js环境，Node.js 官网 <a href="https://nodejs.org/en/">https://nodejs.org/en/</a> 。</p><p>除了Node.js之外，还需要Git：<a href="https://git-scm.com/">https://git-scm.com/</a> 。</p><p>在国内的话下载速度可能很慢，可以使用淘宝镜像下载：<a href="https://npm.taobao.org/mirrors/node">淘宝 Node.js 镜像</a> , <a href="https://npm.taobao.org/mirrors/git-for-windows/">淘宝Git for Windows 镜像</a> 。</p><p>在配置好环境之后，就可以使用npm安装Hexo了：</p><pre><code class="hljs avrasm">$ npm install -g hexo-<span class="hljs-keyword">cli</span></code></pre><h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><p>安装完成后，在指定文件夹下新建一个个人博客只需要执行下面几条命令：</p><pre><code class="hljs powershell"><span class="hljs-variable">$</span> hexo init &lt;folder&gt;<span class="hljs-variable">$</span> <span class="hljs-built_in">cd</span> &lt;folder&gt;<span class="hljs-variable">$</span> npm install</code></pre><p>新建完成后，需要我们注意的文件和文件夹有以下几个：</p><ul><li>__config.yml：配置信息</li><li>scaffolds：模板文件夹，Hexo会使用其中的markdown文件作为模板来新建文件</li><li>source：存放资源的地方，里面有个_posts文件夹就是放blog的地方</li><li>themes：放主题的文件夹，下载的主题一般需要放在这个文件夹里面</li></ul><h2 id="部署到GitHub-Pages"><a href="#部署到GitHub-Pages" class="headerlink" title="部署到GitHub Pages"></a>部署到GitHub Pages</h2><p>如果希望使用开启了GitHub Pages的仓库来搭载Hexo生成的个人博客，需要更改__config.yml 中的 url 和 root。注意：这里只需要仓库开启GitHub Pages功能即可，也可以不在那个xxx.github.io里存放。</p><p>首先，需要配置__config.yml中的 deploy 部分，比如这里我是使用名为 blog 的仓库的 master 分支来存储网站的：</p><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span>  <span class="hljs-attr">repository:</span> <span class="hljs-string">https://github.com/Ahrisya/blog.git</span>  <span class="hljs-attr">branch:</span> <span class="hljs-string">master</span></code></pre><p>如果使用自定义域名的话，比如我在xxx.github.io中使用了自定义域名 <a href="https://ahrisy.com/">https://ahrisy.com</a>，但想在 blog 这个仓库里存放Hexo生成的网站，这时需要更改__config.yml的url和root如下即可：</p><pre><code class="hljs yaml"><span class="hljs-attr">url:</span> <span class="hljs-string">https://ahrisy.com/blog</span><span class="hljs-attr">root:</span> <span class="hljs-string">/blog/</span></code></pre><p>保存修改后，打开 git bash 执行下列命令即可：</p><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>hexo g<span class="hljs-variable">$ </span>hexo d</code></pre><p>hexo g 的意思是生成网站，hexo d 的意思是部署到你指定的 url 上去。等待部署完成后即可在指定的url上看到自己的网站了。</p><p>PS：这时有可能会报错，大意是说 Deployer not found 之类的，这是因为没有安装和 hexo 配套的 git 插件导致的，只需要用如下命令安装之后再 hexo g&amp;d 即可：</p><pre><code class="hljs ada">$ npm intall hexo-deployer-git <span class="hljs-comment">--save</span></code></pre><h2 id="部署到-Vercel"><a href="#部署到-Vercel" class="headerlink" title="部署到 Vercel"></a>部署到 Vercel</h2><p>GitHub Pages 对国内的访客来说连接速度可能很慢，这时候我们可以使用Vercel来部署 Hexo blog。 在我的上一个blog：<a href="https://blog.ahrisy.com/2020/08/20/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%882%EF%BC%89%EF%BC%9AGithub%E5%92%8CVercel%E5%BB%BA%E7%AB%99%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEDNS/">搭建个人网站（2）：Github和Vercel建站以及配置DNS </a> 中讲了如何使用Vercel以及使用自定义域名。</p><p>我们同样需要一个GitHub仓库，这里不需要开启GitHub Pages功能，然后将该仓库导入到 Vercel 中，设置好域名（也可以使用二级域名）。</p><p>在设置好域名之后，同样修改 __config.yml 的 deploy 部分到指定的 GitHub repo， 然后修改 url 到对应的域名即可。</p><p>这样在执行 hexo g&amp;d 之后，改动就会推送到 GitHub 仓库中，而 Vercel 会根据GitHub仓库的改动自动同步更新。</p><p>PS：<strong>如果不是子目录的话，不要修改root！</strong> 否则资源和网页的链接会出错。</p><h2 id="Hexo-常用命令"><a href="#Hexo-常用命令" class="headerlink" title="Hexo 常用命令"></a>Hexo 常用命令</h2><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>hexo new <span class="hljs-string">&quot;文件名&quot;</span>  <span class="hljs-comment"># 新建文章</span><span class="hljs-variable">$ </span>hexo g  <span class="hljs-comment"># 生成静态网页</span><span class="hljs-variable">$ </span>hexo s  <span class="hljs-comment"># 本地预览</span><span class="hljs-variable">$ </span>hexo d  <span class="hljs-comment"># 部署</span></code></pre><p>接下来就是配置模板以及使用 Hexo + Typora 写 blog 需要注意的一些事了。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>建站</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>建站</tag>
+      
+      <tag>Vercel</tag>
+      
+      <tag>Hexo</tag>
+      
+      <tag>Github</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>搭建个人网站（2）：Github和Vercel建站以及配置DNS</title>
     <link href="/2020/08/20/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%882%EF%BC%89%EF%BC%9AGithub%E5%92%8CVercel%E5%BB%BA%E7%AB%99%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEDNS/"/>
     <url>/2020/08/20/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%882%EF%BC%89%EF%BC%9AGithub%E5%92%8CVercel%E5%BB%BA%E7%AB%99%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEDNS/</url>
