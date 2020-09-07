@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>搭建个人网站（4）：Typora搭配Hexo写文章</title>
+    <link href="/2020/09/07/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%884%EF%BC%89%EF%BC%9ATypora%E6%90%AD%E9%85%8DHexo%E5%86%99%E6%96%87%E7%AB%A0/"/>
+    <url>/2020/09/07/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%884%EF%BC%89%EF%BC%9ATypora%E6%90%AD%E9%85%8DHexo%E5%86%99%E6%96%87%E7%AB%A0/</url>
+    
+    <content type="html"><![CDATA[<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>上一篇 <a href="https://blog.ahrisy.com/2020/08/26/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%883%EF%BC%89%EF%BC%9AHexo%E6%90%AD%E5%BB%BABlog/">搭建个人网站（3）：Hexo搭建网站</a> 里提到，Hexo 会使用 scaffolds 文件夹里的markdown作为模板来生成新的文件，我们也可以通过修改它们来自定义自己的模板。</p><p>scaffolds 文件夹里一般会有下面三个默认的模板，分别对应draft, page 和 post 三种文章类型：</p><p><img src="scaffolds.jpg"></p><p>打开之后就可以看到这些文件的内容只有一个YAML格式的文件头：</p><p><img src="page.jpg"></p><p>在使用 Hexo 新建文章的时候就会根据文章类型自动套用这些模板，只要修改相应的.md就可以让之后生成的文章使用我们自定义的模板啦。</p><p>举个最简单的例子，如果希望之后生成的 post 都有 categories 属性，那只用将 categories 加入到 post.md 中即可：</p><p><img src="eg.jpg"></p><h2 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h2><p>Typora是一款很简洁好看的Markdown编辑器，官网：<a href="https://www.typora.io/">https://www.typora.io/</a> 。</p><p>但在使用Typora搭配Hexo写博客的时候，如果不进行一些设置的话，会导致编译后本地图片无法显示等问题，查看图片链接地址的话会发现是图片的路径不对导致的。</p><h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>网上的大部分解决办法（比如下载插件之类的）都过时了，对于新版的Hexo，解决办法非常简单：</p><ul><li><p>Step 1. 将__config.yml 中的 post_asset_folder 设置为 true，这样每次创建文章的时候会生成同名的文件夹，可以将图片等资源文件放进去。</p></li><li><p>Step 2. 使用 Typora 的时候设置 Format — Image — Use Image Root Path，讲 root path 设置为第一步中创建的文件夹。</p></li><li><p>Step 3. 直接用markdown的语法插入图片即可，注意这时不需要写相对目录，也不要写 ‘/‘，<strong>只写文件名即可</strong>，如下图：</p><p><img src="test.jpg"></p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>建站</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Hexo</tag>
+      
+      <tag>Typora</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>搭建个人网站（3）：Hexo搭建网站</title>
     <link href="/2020/08/26/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%883%EF%BC%89%EF%BC%9AHexo%E6%90%AD%E5%BB%BABlog/"/>
     <url>/2020/08/26/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%883%EF%BC%89%EF%BC%9AHexo%E6%90%AD%E5%BB%BABlog/</url>

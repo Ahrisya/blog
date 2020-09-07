@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Ahrisy">
   <meta name="keywords" content="">
-  <title>搭建个人网站（3）：Hexo搭建网站 - Ahrisyの碎碎念</title>
+  <title>搭建个人网站（4）：Typora搭配Hexo写文章 - Ahrisyの碎碎念</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -172,8 +172,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-26 23:34" pubdate>
-      2020年8月26日 晚上
+    <time datetime="2020-09-07 15:10" pubdate>
+      2020年9月7日 下午
     </time>
   </div>
 
@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      902 字
+      457 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      5
        分钟
     </span>
   
@@ -223,65 +223,29 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">搭建个人网站（3）：Hexo搭建网站</h1>
+            <h1 style="display: none">搭建个人网站（4）：Typora搭配Hexo写文章</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Hexo 是一款使用Node.js的博客框架，可以使用它来快速生成静态网页，还有很多可选用的主题，也可以自己修改主题。</p>
-<p>中文官网：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a></p>
-<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><p>在安装Hexo之前需要安装Node.js环境，Node.js 官网 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">https://nodejs.org/en/</a> 。</p>
-<p>除了Node.js之外，还需要Git：<a target="_blank" rel="noopener" href="https://git-scm.com/">https://git-scm.com/</a> 。</p>
-<p>在国内的话下载速度可能很慢，可以使用淘宝镜像下载：<a target="_blank" rel="noopener" href="https://npm.taobao.org/mirrors/node">淘宝 Node.js 镜像</a> , <a target="_blank" rel="noopener" href="https://npm.taobao.org/mirrors/git-for-windows/">淘宝Git for Windows 镜像</a> 。</p>
-<p>在配置好环境之后，就可以使用npm安装Hexo了：</p>
-<pre><code class="hljs avrasm">$ npm install -g hexo-<span class="hljs-keyword">cli</span></code></pre>
-
-
-
-<h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><p>安装完成后，在指定文件夹下新建一个个人博客只需要执行下面几条命令：</p>
-<pre><code class="hljs powershell"><span class="hljs-variable">$</span> hexo init &lt;folder&gt;
-<span class="hljs-variable">$</span> <span class="hljs-built_in">cd</span> &lt;folder&gt;
-<span class="hljs-variable">$</span> npm install</code></pre>
-
-<p>新建完成后，需要我们注意的文件和文件夹有以下几个：</p>
+              <h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>上一篇 <a target="_blank" rel="noopener" href="https://blog.ahrisy.com/2020/08/26/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%883%EF%BC%89%EF%BC%9AHexo%E6%90%AD%E5%BB%BABlog/">搭建个人网站（3）：Hexo搭建网站</a> 里提到，Hexo 会使用 scaffolds 文件夹里的markdown作为模板来生成新的文件，我们也可以通过修改它们来自定义自己的模板。</p>
+<p>scaffolds 文件夹里一般会有下面三个默认的模板，分别对应draft, page 和 post 三种文章类型：</p>
+<p><img src="scaffolds.jpg" srcset="/img/loading.gif"></p>
+<p>打开之后就可以看到这些文件的内容只有一个YAML格式的文件头：</p>
+<p><img src="page.jpg" srcset="/img/loading.gif"></p>
+<p>在使用 Hexo 新建文章的时候就会根据文章类型自动套用这些模板，只要修改相应的.md就可以让之后生成的文章使用我们自定义的模板啦。</p>
+<p>举个最简单的例子，如果希望之后生成的 post 都有 categories 属性，那只用将 categories 加入到 post.md 中即可：</p>
+<p><img src="eg.jpg" srcset="/img/loading.gif"></p>
+<h2 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h2><p>Typora是一款很简洁好看的Markdown编辑器，官网：<a target="_blank" rel="noopener" href="https://www.typora.io/">https://www.typora.io/</a> 。</p>
+<p>但在使用Typora搭配Hexo写博客的时候，如果不进行一些设置的话，会导致编译后本地图片无法显示等问题，查看图片链接地址的话会发现是图片的路径不对导致的。</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>网上的大部分解决办法（比如下载插件之类的）都过时了，对于新版的Hexo，解决办法非常简单：</p>
 <ul>
-<li>__config.yml：配置信息</li>
-<li>scaffolds：模板文件夹，Hexo会使用其中的markdown文件作为模板来新建文件</li>
-<li>source：存放资源的地方，里面有个_posts文件夹就是放blog的地方</li>
-<li>themes：放主题的文件夹，下载的主题一般需要放在这个文件夹里面</li>
+<li><p>Step 1. 将__config.yml 中的 post_asset_folder 设置为 true，这样每次创建文章的时候会生成同名的文件夹，可以将图片等资源文件放进去。</p>
+</li>
+<li><p>Step 2. 使用 Typora 的时候设置 Format — Image — Use Image Root Path，讲 root path 设置为第一步中创建的文件夹。</p>
+</li>
+<li><p>Step 3. 直接用markdown的语法插入图片即可，注意这时不需要写相对目录，也不要写 ‘/‘，<strong>只写文件名即可</strong>，如下图：</p>
+<p><img src="test.jpg" srcset="/img/loading.gif"></p>
+</li>
 </ul>
-<h2 id="部署到GitHub-Pages"><a href="#部署到GitHub-Pages" class="headerlink" title="部署到GitHub Pages"></a>部署到GitHub Pages</h2><p>如果希望使用开启了GitHub Pages的仓库来搭载Hexo生成的个人博客，需要更改__config.yml 中的 url 和 root。注意：这里只需要仓库开启GitHub Pages功能即可，也可以不在那个xxx.github.io里存放。</p>
-<p>首先，需要配置__config.yml中的 deploy 部分，比如这里我是使用名为 blog 的仓库的 master 分支来存储网站的：</p>
-<pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span>
-  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span>
-  <span class="hljs-attr">repository:</span> <span class="hljs-string">https://github.com/Ahrisya/blog.git</span>
-  <span class="hljs-attr">branch:</span> <span class="hljs-string">master</span></code></pre>
-
-<p>如果使用自定义域名的话，比如我在xxx.github.io中使用了自定义域名 <a href="https://ahrisy.com/">https://ahrisy.com</a>，但想在 blog 这个仓库里存放Hexo生成的网站，这时需要更改__config.yml的url和root如下即可：</p>
-<pre><code class="hljs yaml"><span class="hljs-attr">url:</span> <span class="hljs-string">https://ahrisy.com/blog</span>
-<span class="hljs-attr">root:</span> <span class="hljs-string">/blog/</span></code></pre>
-
-<p>保存修改后，打开 git bash 执行下列命令即可：</p>
-<pre><code class="hljs elixir"><span class="hljs-variable">$ </span>hexo g
-<span class="hljs-variable">$ </span>hexo d</code></pre>
-
-<p>hexo g 的意思是生成网站，hexo d 的意思是部署到你指定的 url 上去。等待部署完成后即可在指定的url上看到自己的网站了。</p>
-<p>PS：这时有可能会报错，大意是说 Deployer not found 之类的，这是因为没有安装和 hexo 配套的 git 插件导致的，只需要用如下命令安装之后再 hexo g&amp;d 即可：</p>
-<pre><code class="hljs ada">$ npm intall hexo-deployer-git <span class="hljs-comment">--save</span></code></pre>
-
-
-
-<h2 id="部署到-Vercel"><a href="#部署到-Vercel" class="headerlink" title="部署到 Vercel"></a>部署到 Vercel</h2><p>GitHub Pages 对国内的访客来说连接速度可能很慢，这时候我们可以使用Vercel来部署 Hexo blog。 在我的上一个blog：<a target="_blank" rel="noopener" href="https://blog.ahrisy.com/2020/08/20/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%882%EF%BC%89%EF%BC%9AGithub%E5%92%8CVercel%E5%BB%BA%E7%AB%99%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEDNS/">搭建个人网站（2）：Github和Vercel建站以及配置DNS </a> 中讲了如何使用Vercel以及使用自定义域名。</p>
-<p>我们同样需要一个GitHub仓库，这里不需要开启GitHub Pages功能，然后将该仓库导入到 Vercel 中，设置好域名（也可以使用二级域名）。</p>
-<p>在设置好域名之后，同样修改 __config.yml 的 deploy 部分到指定的 GitHub repo， 然后修改 url 到对应的域名即可。</p>
-<p>这样在执行 hexo g&amp;d 之后，改动就会推送到 GitHub 仓库中，而 Vercel 会根据GitHub仓库的改动自动同步更新。</p>
-<p>PS：<strong>如果不是子目录的话，不要修改root！</strong> 否则资源和网页的链接会出错。</p>
-<h2 id="Hexo-常用命令"><a href="#Hexo-常用命令" class="headerlink" title="Hexo 常用命令"></a>Hexo 常用命令</h2><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>hexo new <span class="hljs-string">&quot;文件名&quot;</span>  <span class="hljs-comment"># 新建文章</span>
-<span class="hljs-variable">$ </span>hexo g  <span class="hljs-comment"># 生成静态网页</span>
-<span class="hljs-variable">$ </span>hexo s  <span class="hljs-comment"># 本地预览</span>
-<span class="hljs-variable">$ </span>hexo d  <span class="hljs-comment"># 部署</span></code></pre>
-
-
-
-<p>接下来就是配置模板以及使用 Hexo + Typora 写 blog 需要注意的一些事了。</p>
 
             </div>
             <hr>
@@ -299,13 +263,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%BB%BA%E7%AB%99/">建站</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Vercel/">Vercel</a>
-                    
                       <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
                     
-                      <a class="hover-with-bg" href="/tags/Github/">Github</a>
+                      <a class="hover-with-bg" href="/tags/Typora/">Typora</a>
                     
                   </div>
                 
@@ -318,18 +278,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/07/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%884%EF%BC%89%EF%BC%9ATypora%E6%90%AD%E9%85%8DHexo%E5%86%99%E6%96%87%E7%AB%A0/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">搭建个人网站（4）：Typora搭配Hexo写文章</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/08/20/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%882%EF%BC%89%EF%BC%9AGithub%E5%92%8CVercel%E5%BB%BA%E7%AB%99%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEDNS/">
-                        <span class="hidden-mobile">搭建个人网站（2）：Github和Vercel建站以及配置DNS</span>
+                      <a href="/2020/08/26/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%883%EF%BC%89%EF%BC%9AHexo%E6%90%AD%E5%BB%BABlog/">
+                        <span class="hidden-mobile">搭建个人网站（3）：Hexo搭建网站</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -491,7 +445,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "搭建个人网站（3）：Hexo搭建网站&nbsp;",
+        "搭建个人网站（4）：Typora搭配Hexo写文章&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
