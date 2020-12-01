@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Ahrisy">
   <meta name="keywords" content="">
-  <title>搭建个人网站（4）：Typora搭配Hexo写文章 - Ahrisyの碎碎念</title>
+  <title>Pipenv基本用法 - Ahrisyの碎碎念</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -172,8 +172,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-09-07 15:10" pubdate>
-      2020年9月7日 下午
+    <time datetime="2020-12-01 18:19" pubdate>
+      2020年12月1日 晚上
     </time>
   </div>
 
@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      457 字
+      1.2k 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      15
        分钟
     </span>
   
@@ -223,30 +223,180 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">搭建个人网站（4）：Typora搭配Hexo写文章</h1>
+            <h1 style="display: none">Pipenv基本用法</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>上一篇 <a target="_blank" rel="noopener" href="https://blog.ahrisy.com/2020/08/26/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%883%EF%BC%89%EF%BC%9AHexo%E6%90%AD%E5%BB%BABlog/">搭建个人网站（3）：Hexo搭建网站</a> 里提到，Hexo 会使用 scaffolds 文件夹里的markdown作为模板来生成新的文件，我们也可以通过修改它们来自定义自己的模板。</p>
-<p>scaffolds 文件夹里一般会有下面三个默认的模板，分别对应draft, page 和 post 三种文章类型：</p>
-<p><img src="scaffolds.jpg" srcset="/img/loading.gif"></p>
-<p>打开之后就可以看到这些文件的内容只有一个YAML格式的文件头：</p>
-<p><img src="page.jpg" srcset="/img/loading.gif"></p>
-<p>在使用 Hexo 新建文章的时候就会根据文章类型自动套用这些模板，只要修改相应的.md就可以让之后生成的文章使用我们自定义的模板啦。</p>
-<p>举个最简单的例子，如果希望之后生成的 post 都有 categories 属性，那只用将 categories 加入到 post.md 中即可：</p>
-<p><img src="eg.jpg" srcset="/img/loading.gif"></p>
-<h2 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h2><p>Typora是一款很简洁好看的Markdown编辑器，官网：<a target="_blank" rel="noopener" href="https://www.typora.io/">https://www.typora.io/</a> 。</p>
-<p>但在使用Typora搭配Hexo写博客的时候，如果不进行一些设置的话，会导致编译后本地图片无法显示等问题，查看图片链接地址的话会发现是图片的路径不对导致的。</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>网上的大部分解决办法（比如下载插件之类的）都过时了，对于新版的Hexo，解决办法非常简单：</p>
-<ul>
-<li><p>Step 1. 将__config.yml 中的 post_asset_folder 设置为 true，这样每次创建文章的时候会生成同名的文件夹，可以将图片等资源文件放进去。</p>
-</li>
-<li><p>Step 2. 使用 Typora 的时候设置 Format — Image — Use Image Root Path，讲 root path 设置为第一步中创建的文件夹。</p>
-</li>
-<li><p>Step 3. 直接用markdown的语法插入图片即可，注意这时不需要写相对目录，也不要写 ‘/‘，<strong>只写文件名即可</strong>，如下图：</p>
-<p><img src="test.jpg" srcset="/img/loading.gif"></p>
-</li>
-</ul>
+              <h1 id="SQLite基本用法"><a href="#SQLite基本用法" class="headerlink" title="SQLite基本用法"></a>SQLite基本用法</h1><p>首先在命令行里输入</p>
+<pre><code class="hljs plain">sqlite3</code></pre>
 
+<p>进入SQLite命令提示符。</p>
+<h2 id="点命令"><a href="#点命令" class="headerlink" title="点命令"></a>点命令</h2><h3 id="数据库相关点命令"><a href="#数据库相关点命令" class="headerlink" title="数据库相关点命令"></a>数据库相关点命令</h3><ul>
+<li>.open FILENAME 打开一个数据库</li>
+<li>.tables 列出所有表</li>
+<li>.schema 显示CREATE语句</li>
+<li>.schema TABLE 显示表的CREATE语句</li>
+<li>.output FILENAME 发送输出到文件，如果不存在则创建（之后接.dump）</li>
+<li>.dump TABLE 将表写入指定的文件（之前接.output）</li>
+<li>.read FILENAME 读取脚本文件（如使用.output和.dump创建的文件）</li>
+</ul>
+<h3 id="其他常用点命令"><a href="#其他常用点命令" class="headerlink" title="其他常用点命令"></a>其他常用点命令</h3><ul>
+<li>.help 帮助</li>
+<li>.exit/.quit 退出</li>
+<li>.databases 列出数据库名称及路径文件</li>
+<li>.backup DB FILE 将DB数据库（默认是”main”）备份到FILE</li>
+<li>.show 显示当前设置</li>
+<li>.header on/off 开关表头</li>
+<li>.mode list/column/csv/tabs/html 设置显示模式</li>
+</ul>
+<p>比较好看的输出格式：</p>
+<pre><code class="hljs pgsql">.<span class="hljs-keyword">header</span> <span class="hljs-keyword">on</span>
+.mode <span class="hljs-keyword">column</span></code></pre>
+
+<h2 id="常用数据类型"><a href="#常用数据类型" class="headerlink" title="常用数据类型"></a>常用数据类型</h2><ul>
+<li>NULL</li>
+<li>INT</li>
+<li>TEXT</li>
+<li>BLOB：二进制大对象（binary large object），如图片、声音和自定义对象等。</li>
+<li>REAL</li>
+</ul>
+<p>Boolean：SQLite没有单独的Boolean类型，存为0和1。</p>
+<p>Date和Time：</p>
+<ul>
+<li>格式为YYYY-MM-DD HH:MM:SS.SSS：TEXT</li>
+<li>天数：REAL</li>
+<li>秒数：INTEGER</li>
+</ul>
+<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p>在命令行中：</p>
+<pre><code class="hljs reasonml">sqlite3 <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">DATABASENAME</span>.</span></span>db</code></pre>
+
+<p>在命令行中也可以使用.dump来导出完整的数据库到一个文本文件中：</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">sqlite3</span> <span class="hljs-selector-tag">test</span><span class="hljs-selector-class">.db</span> <span class="hljs-selector-class">.dump</span> &gt; <span class="hljs-selector-tag">test</span><span class="hljs-selector-class">.sql</span></code></pre>
+
+<p>上述命令将test.db的内容转换成SQLite语句，并将其存储到test.sql中。</p>
+<p>也可也从test.sql中恢复：</p>
+<pre><code class="hljs stata">sqlite3 <span class="hljs-keyword">test</span>.<span class="hljs-keyword">db</span> &lt; <span class="hljs-keyword">test</span>.sql</code></pre>
+
+<h3 id="附加和分离数据库"><a href="#附加和分离数据库" class="headerlink" title="附加和分离数据库"></a>附加和分离数据库</h3><p>当想在同一时间使用多个数据库时，可以使用<strong>ATTACH DATABASE</strong>语句附加一个特定的数据库。然后所有的SQLite语句将在附加的数据库下执行。</p>
+<pre><code class="hljs sqlite">ATTACH DATABASE filename AS database_name;</code></pre>
+
+<p>如果数据库未创建，上述命令将先创建一个数据库。</p>
+<p>对应的分离数据库：</p>
+<pre><code class="hljs sqlite">DETACH DATABASE database_name;</code></pre>
+
+<h3 id="创建与删除表CREATE-DROP"><a href="#创建与删除表CREATE-DROP" class="headerlink" title="创建与删除表CREATE/DROP"></a>创建与删除表CREATE/DROP</h3><p>在当前数据库下创建表：</p>
+<pre><code class="hljs sqlite">CREATE TABLE table_name(
+    column1 datatype PRIMARY KEY，
+    column2 datatype,
+    ...
+    columnN datatype,
+);</code></pre>
+
+<p>在 datatype 后面可以加上 NOT NULL的约束，表示该列不能为NULL。</p>
+<p>删除表：</p>
+<pre><code class="hljs sqlite">DROP TABLE table_name;</code></pre>
+
+<h3 id="插入行INSERT"><a href="#插入行INSERT" class="headerlink" title="插入行INSERT"></a>插入行INSERT</h3><p>可以使用<strong>INSERT INTO</strong>添加新的数据行：</p>
+<pre><code class="hljs sqlite">INSERT INTO table_name (column1, column2, ... , columnN)
+VALUES(value1, value2, ..., valueN);</code></pre>
+
+<p>如果要为表中所有列添加值，可以省略列名：</p>
+<pre><code class="hljs sqlite">INSERT INTO table_name VALUES(value1, value2, ..., valueN);</code></pre>
+
+<p>使用一个表来填充另一个：</p>
+<pre><code class="hljs sqlite">INSERT INTO first_table_name (column1, column2, ..., columnN)
+SELECT column1, column2, ..., columnN
+FROM second_table_name
+WHERE condition;</code></pre>
+
+<h3 id="获取数据SELECT"><a href="#获取数据SELECT" class="headerlink" title="获取数据SELECT"></a>获取数据SELECT</h3><pre><code class="hljs sqlite">SELECT column1, column2, ..., columnN FROM table_name;</code></pre>
+
+<p>如果要获取所有列：</p>
+<pre><code class="hljs sqlite">SELECT * FROM table_name;</code></pre>
+
+<p>如果需要消除重复的记录：</p>
+<pre><code class="hljs sqlite">SELECT DISTINCT column1,... FROM table_name;</code></pre>
+
+<p>可以使用<strong>WHERE</strong>子句指定获取数据的条件。</p>
+<pre><code class="hljs sqlite">SELECT column1, column2, ..., columnN FROM table_name
+WHERE condition;</code></pre>
+
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><ul>
+<li>&lt;&gt; （!=也可以用）不等于</li>
+<li>AND，OR，IS（=），NOT，IS NOT（!=）</li>
+<li>EXISTS：在满足一定条件的指定表中搜索行的存在</li>
+<li>UNIQUE：确保无重复</li>
+<li>IN，NOT IN：把某个值与指定列表中的值比较</li>
+<li>BETWEEN min AND max：在区间[min, max]中</li>
+<li>LIKE：把某个值与使用通配符运算符的相似值进行比较</li>
+<li>GLOB：与LIKE相似，但大小写敏感</li>
+</ul>
+<p>LIKE的通配符：</p>
+<ul>
+<li>% 零个、一个或多个数字或字符</li>
+<li>_ 单一的数字或字符</li>
+</ul>
+<p>GLOB的通配符：</p>
+<ul>
+<li><p>* 零个、一个或多个数字或字符</p>
+</li>
+<li><p>? 单一的数字或字符</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4></li>
+</ul>
+<p>所有以Ki开始的记录，之后的字符不做限制。</p>
+<p>使用LIKE：</p>
+<pre><code class="hljs sqlite">SELECT * FROM COMPANY WHERE NAME LIKE &#39;Ki%&#39;;</code></pre>
+
+<pre><code class="hljs sqlite">SELECT * FROM COMPANY WHERE NAME GLOB &#39;Ki*&#39;;</code></pre>
+
+<p>子查询查找所有SALARY &gt; 65000的AGE记录，然后列出外查询中AGE存在于子查询返回的结果中的记录的AGE。</p>
+<pre><code class="hljs sqlite">SELECT AGE FROM COMPANY WHERE EXISTS (SELECT AGE FROM COMPANY WHERE SALARY &gt; 65000);</code></pre>
+
+<p>子查询查找所有SALARY &gt; 65000的AGE记录，然后选出外查询中AGE大于所有子查询返回的结果的记录。(也就是说AGE大但SALARY&lt;65000的记录)</p>
+<pre><code class="hljs sqlite">SELECT * FROM COMPANY WHERE AGE &gt; (SELECT AGE FROM COMPANY WHERE SALARY &gt; 65000);</code></pre>
+
+<p>查询所有AGE为25或27的记录</p>
+<pre><code class="hljs sqlite">SELECT * FROM COMPANY WHERE AGE IN (25, 27);</code></pre>
+
+<h3 id="更新-修改数据UPDATE"><a href="#更新-修改数据UPDATE" class="headerlink" title="更新/修改数据UPDATE"></a>更新/修改数据UPDATE</h3><p>使用<strong>UPDATE</strong>查询和修改记录：</p>
+<pre><code class="hljs sqlite">UPDATE table_name
+SET column1 &#x3D; value1, column2 &#x3D; value2, ..., columnN &#x3D; valueN
+WHERE condition;</code></pre>
+
+<h3 id="删除记录DELETE"><a href="#删除记录DELETE" class="headerlink" title="删除记录DELETE"></a>删除记录DELETE</h3><pre><code class="hljs sqlite">DELETE FROM table_name
+WHERE condition;</code></pre>
+
+<p>删除表中所有记录：</p>
+<pre><code class="hljs sqlite">DELETE FROM table_name;</code></pre>
+
+<h3 id="LIMIT"><a href="#LIMIT" class="headerlink" title="LIMIT"></a>LIMIT</h3><p>限制由<strong>SELECT</strong>语句返回的数据数量。</p>
+<pre><code class="hljs sqlite">SELECT column1, ..., columnN
+FROM table_name
+LIMIT number_of_rows;</code></pre>
+
+<p>与<strong>OFFSET</strong>一起用，则是从第start_row+1行开始，提取number_of_rows个记录：</p>
+<pre><code class="hljs sqlite">SELECT column1, ... columnN
+FROM table_name
+LIMIT number_of_rows OFFSET start_row;</code></pre>
+
+<h3 id="数据分组、过滤、排序"><a href="#数据分组、过滤、排序" class="headerlink" title="数据分组、过滤、排序"></a>数据分组、过滤、排序</h3><p>顺序：</p>
+<pre><code class="hljs sqlite">SELECT FROM
+WHERE
+GROUP BY
+HAVING
+ORDER BY</code></pre>
+
+<h4 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h4><p>对数据分组。</p>
+<pre><code class="hljs sqlite">SELECT column1, ... columnN
+FROM table_name
+GROUP BY column1, ... columnN;</code></pre>
+
+<h4 id="HAVING"><a href="#HAVING" class="headerlink" title="HAVING"></a>HAVING</h4><p>和<strong>WHERE</strong>语句相同，只不过是在<strong>GROUP BY</strong>语句上设置条件。</p>
+<h4 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h4><p>按一个或多个列升序/降序排列数据：</p>
+<pre><code class="hljs sqlite">SELECT column1, ... columnN
+FROM table_name
+ORDER BY column1, ... columnN ASC&#x2F;DESC;</code></pre>
+
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4>
             </div>
             <hr>
             <div>
@@ -255,7 +405,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%BB%BA%E7%AB%99/">建站</a>
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
                     
                   </div>
                 
@@ -263,9 +413,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Typora/">Typora</a>
+                      <a class="hover-with-bg" href="/tags/SQLite/">SQLite</a>
                     
                   </div>
                 
@@ -278,18 +426,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/12/01/PIpenv%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Pipenv常用命令</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/08/26/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%883%EF%BC%89%EF%BC%9AHexo%E6%90%AD%E5%BB%BABlog/">
-                        <span class="hidden-mobile">搭建个人网站（3）：Hexo搭建网站</span>
+                      <a href="/2020/12/01/PIpenv%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+                        <span class="hidden-mobile">Pipenv常用命令</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -451,7 +593,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "搭建个人网站（4）：Typora搭配Hexo写文章&nbsp;",
+        "Pipenv基本用法&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

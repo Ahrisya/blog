@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Ahrisy">
   <meta name="keywords" content="">
-  <title>搭建个人网站（4）：Typora搭配Hexo写文章 - Ahrisyの碎碎念</title>
+  <title>Pipenv常用命令 - Ahrisyの碎碎念</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -172,8 +172,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-09-07 15:10" pubdate>
-      2020年9月7日 下午
+    <time datetime="2020-12-01 18:19" pubdate>
+      2020年12月1日 晚上
     </time>
   </div>
 
@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      457 字
+      354 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      4
        分钟
     </span>
   
@@ -223,29 +223,51 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">搭建个人网站（4）：Typora搭配Hexo写文章</h1>
+            <h1 style="display: none">Pipenv常用命令</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>上一篇 <a target="_blank" rel="noopener" href="https://blog.ahrisy.com/2020/08/26/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%883%EF%BC%89%EF%BC%9AHexo%E6%90%AD%E5%BB%BABlog/">搭建个人网站（3）：Hexo搭建网站</a> 里提到，Hexo 会使用 scaffolds 文件夹里的markdown作为模板来生成新的文件，我们也可以通过修改它们来自定义自己的模板。</p>
-<p>scaffolds 文件夹里一般会有下面三个默认的模板，分别对应draft, page 和 post 三种文章类型：</p>
-<p><img src="scaffolds.jpg" srcset="/img/loading.gif"></p>
-<p>打开之后就可以看到这些文件的内容只有一个YAML格式的文件头：</p>
-<p><img src="page.jpg" srcset="/img/loading.gif"></p>
-<p>在使用 Hexo 新建文章的时候就会根据文章类型自动套用这些模板，只要修改相应的.md就可以让之后生成的文章使用我们自定义的模板啦。</p>
-<p>举个最简单的例子，如果希望之后生成的 post 都有 categories 属性，那只用将 categories 加入到 post.md 中即可：</p>
-<p><img src="eg.jpg" srcset="/img/loading.gif"></p>
-<h2 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h2><p>Typora是一款很简洁好看的Markdown编辑器，官网：<a target="_blank" rel="noopener" href="https://www.typora.io/">https://www.typora.io/</a> 。</p>
-<p>但在使用Typora搭配Hexo写博客的时候，如果不进行一些设置的话，会导致编译后本地图片无法显示等问题，查看图片链接地址的话会发现是图片的路径不对导致的。</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>网上的大部分解决办法（比如下载插件之类的）都过时了，对于新版的Hexo，解决办法非常简单：</p>
+              <h1 id="Pipenv-常用命令"><a href="#Pipenv-常用命令" class="headerlink" title="Pipenv 常用命令"></a>Pipenv 常用命令</h1><p>一段时间没用就忘了不少，记下来下次好找。</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h3><p>cd到需要创建虚拟环境的文件夹，然后：</p>
+<pre><code class="hljs cmake">pipenv <span class="hljs-keyword">install</span></code></pre>
+
 <ul>
-<li><p>Step 1. 将__config.yml 中的 post_asset_folder 设置为 true，这样每次创建文章的时候会生成同名的文件夹，可以将图片等资源文件放进去。</p>
+<li><p>如果目录中虚拟环境<strong>未</strong>创建，则创建虚拟环境与 Pipfile 文件。</p>
 </li>
-<li><p>Step 2. 使用 Typora 的时候设置 Format — Image — Use Image Root Path，讲 root path 设置为第一步中创建的文件夹。</p>
+<li><p>如果目录中虚拟环境<strong>未</strong>创建且<strong>有</strong> Pipfile 文件，则根据 Pipfile 文件来安装相应的python版本和依赖包。</p>
 </li>
-<li><p>Step 3. 直接用markdown的语法插入图片即可，注意这时不需要写相对目录，也不要写 ‘/‘，<strong>只写文件名即可</strong>，如下图：</p>
-<p><img src="test.jpg" srcset="/img/loading.gif"></p>
+<li><p>如果目录中虚拟环境<strong>已</strong>创建且<strong>有</strong> Pipfile 文件，则根据 Pipfile 文件来安装依赖包。</p>
 </li>
 </ul>
+<p>PS：如果需要切换成国内镜像源的话直接修改 Pipfile 和 Pipfile.lock 里的 url 就可以了。</p>
+<h3 id="激活虚拟环境"><a href="#激活虚拟环境" class="headerlink" title="激活虚拟环境"></a>激活虚拟环境</h3><p>进入虚拟环境文件夹，然后：</p>
+<pre><code class="hljs dockerfile">pipenv <span class="hljs-keyword">shell</span></code></pre>
+
+<h3 id="安装包到虚拟环境"><a href="#安装包到虚拟环境" class="headerlink" title="安装包到虚拟环境"></a>安装包到虚拟环境</h3><pre><code class="hljs sql">pipenv <span class="hljs-keyword">install</span> <span class="hljs-keyword">package</span>-<span class="hljs-keyword">name</span></code></pre>
+
+<h3 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h3><pre><code class="hljs awk"><span class="hljs-keyword">exit</span></code></pre>
+
+
+
+<h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><h3 id="指定Python版本"><a href="#指定Python版本" class="headerlink" title="指定Python版本"></a>指定Python版本</h3><pre><code class="hljs apache"><span class="hljs-attribute">pipenv</span> --python <span class="hljs-number">3</span>
+<span class="hljs-attribute">pipenv</span> --python <span class="hljs-number">3</span>.<span class="hljs-number">7</span>
+<span class="hljs-attribute">pipenv</span> --python <span class="hljs-number">2</span>.<span class="hljs-number">7</span>.<span class="hljs-number">14</span></code></pre>
+
+<p>这几种命令都支持，但指定的版本必须是系统已经安装且在环境变量中可以找到的版本。</p>
+<p>如果不指定的话，pipenv会使用系统默认的python版本。</p>
+<h3 id="查看已经安装的模块"><a href="#查看已经安装的模块" class="headerlink" title="查看已经安装的模块"></a>查看已经安装的模块</h3><pre><code class="hljs ebnf"><span class="hljs-attribute">pipenv graph</span></code></pre>
+
+<h3 id="卸载模块"><a href="#卸载模块" class="headerlink" title="卸载模块"></a>卸载模块</h3><pre><code class="hljs sql">pipenv <span class="hljs-keyword">uninstall</span> <span class="hljs-keyword">package</span>-<span class="hljs-keyword">name</span></code></pre>
+
+<h3 id="获取当前环境根目录"><a href="#获取当前环境根目录" class="headerlink" title="获取当前环境根目录"></a>获取当前环境根目录</h3><pre><code class="hljs ada">pipenv <span class="hljs-comment">--where</span></code></pre>
+
+<h3 id="获取当前虚拟环境位置"><a href="#获取当前虚拟环境位置" class="headerlink" title="获取当前虚拟环境位置"></a>获取当前虚拟环境位置</h3><pre><code class="hljs ada">pipenv <span class="hljs-comment">--venv</span></code></pre>
+
+<h3 id="通过-requirements-txt文件安装模块"><a href="#通过-requirements-txt文件安装模块" class="headerlink" title="通过 requirements.txt文件安装模块"></a>通过 requirements.txt文件安装模块</h3><pre><code class="hljs cmake">pipenv <span class="hljs-keyword">install</span> -r requirements.txt</code></pre>
+
+<h3 id="导出所安装的包到-requirements-txt"><a href="#导出所安装的包到-requirements-txt" class="headerlink" title="导出所安装的包到 requirements.txt"></a>导出所安装的包到 requirements.txt</h3><pre><code class="hljs cos">pipenv <span class="hljs-keyword">lock</span> -<span class="hljs-keyword">r</span></code></pre>
+
+<h3 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h3><pre><code class="hljs ada">pipenv <span class="hljs-comment">--help</span></code></pre>
+
 
             </div>
             <hr>
@@ -255,7 +277,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%BB%BA%E7%AB%99/">建站</a>
+                      <a class="hover-with-bg" href="/categories/Python/">Python</a>
                     
                   </div>
                 
@@ -263,9 +285,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
+                      <a class="hover-with-bg" href="/tags/Pipenv/">Pipenv</a>
                     
-                      <a class="hover-with-bg" href="/tags/Typora/">Typora</a>
+                      <a class="hover-with-bg" href="/tags/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">虚拟环境</a>
                     
                   </div>
                 
@@ -278,9 +300,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/12/01/PIpenv%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+                      <a href="/2020/12/01/SQLite%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Pipenv常用命令</span>
+                        <span class="hidden-mobile">Pipenv基本用法</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -288,8 +310,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/08/26/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%883%EF%BC%89%EF%BC%9AHexo%E6%90%AD%E5%BB%BABlog/">
-                        <span class="hidden-mobile">搭建个人网站（3）：Hexo搭建网站</span>
+                      <a href="/2020/09/07/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%884%EF%BC%89%EF%BC%9ATypora%E6%90%AD%E9%85%8DHexo%E5%86%99%E6%96%87%E7%AB%A0/">
+                        <span class="hidden-mobile">搭建个人网站（4）：Typora搭配Hexo写文章</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -451,7 +473,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "搭建个人网站（4）：Typora搭配Hexo写文章&nbsp;",
+        "Pipenv常用命令&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
